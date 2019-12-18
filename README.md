@@ -1,2 +1,5 @@
 # php-single-line-db-queries
-A set of functions to simplify database queries in PHP by making it possible to execute them in only one line of code.
+Very small and light library whose goal is to make it possible to execute database queries in just one line of code.
+
+# Usage
+Usage examples can be found in 'index.php'.

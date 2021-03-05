@@ -19,7 +19,7 @@ function executeNonQuery($sql, $args = NULL) {
     return $sql->execute();
 }
 
-function executeQuery($query, $args = NULL) {
+function executeQuery($query, $args = NULL, $fetchMode = PDO::FETCH_BOTH) {
     $connection = DBConnectionHolder::getConnection();
     $query = $connection->prepare($query);
 
@@ -28,10 +28,15 @@ function executeQuery($query, $args = NULL) {
     }
 
     $query->execute();
-    $results = $query->fetchALL(PDO::FETCH_BOTH);
+    $results = $query->fetchAll($fetchMode);
     $query->closeCursor();
 
     return $results;
+}
+
+function getLastInsertedID($name = NULL) {
+    $connection = DBConnectionHolder::getConnection();
+    return $connection->lastInsertId($name);
 }
 
 ?>
